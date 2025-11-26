@@ -1,0 +1,2 @@
+ac-path-pkgconfig.patch
+disable-memory-tests-alpha-arm64-ppc-ppc64-ppc64el-riscv64-s390x.patch

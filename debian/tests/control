@@ -1,0 +1,17 @@
+Test-Command: vhdiinfo -V
+Restrictions: superficial
+
+Test-Command: vhdimount -V
+Restrictions: superficial
+
+Test-Command: qemu-img create -f vpc disk.vhd 34k;
+              vhdiinfo disk.vhd
+Depends: qemu-utils,
+         @
+Restrictions: allow-stderr
+
+Test-Command: qemu-img create -f vhdx disk.vhdx 34k;
+              vhdiinfo disk.vhdx
+Depends: qemu-utils,
+         @
+Restrictions: allow-stderr

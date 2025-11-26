@@ -1,5 +1,204 @@
-template-repository (1.0-1) unstable; urgency=medium
+libvhdi (20240509-2) unstable; urgency=medium
 
-  * Initial release
+  * Add debian/tests/control to perform tests.
+  * Add python3-setuptools to Build-Depends field.
+    (Closes: #1080652)
+  * Change from libfuse-dev to libfuse3-dev in the Build-Depends field.
+    (Closes: #1084432)
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Francisco Vilmar Cardoso Ruviaro <vilmar@debian.org>  Mon, 07 Oct 2024 15:57:41 +0000
+
+libvhdi (20240509-1) unstable; urgency=medium
+
+  * Add searchmode option and update the search rule in debian/watch.
+  * New upstream version 20240509.
+  * Refresh all patches. (Closes: #1050846)
+  * Update my email address.
+  * Update packaging copyright years.
+  * Run wrap-and-sort -a.
+  * Drop the --disable-python2 from dh_auto_configure.
+  * Use the --enable-python option instead of --enable-python3 from
+    dh_auto_configure.
+  * Change from pkg-config to pkgconf in the Build-Depends field.
+  * Add myself as an uploader.
+
+ -- Francisco Vilmar Cardoso Ruviaro <vilmar@debian.org>  Tue, 30 Jul 2024 17:53:17 +0000
+
+libvhdi (20210425-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream version 20210425.
+  * Bump Standards-Version to 4.6.0.
+  * Refresh patch for new upstream release:
+    d/p/disable-memory-tests-alpha-arm64-ppc-ppc64-ppc64el-riscv64-s390x.patch.
+
+ -- Francisco Vilmar Cardoso Ruviaro <vilmar@debian.org>  Sun, 31 Oct 2021 20:11:15 +0000
+
+libvhdi (20201204-3) unstable; urgency=medium
+
+  * Team upload.
+  * debian/patches/:
+     - disable-memory-tests-on-riscv64.patch: update to disable memory tests on
+       alpha, arm64, powerpc, ppc64, ppc64el, riscv64 and s390x, and rename to
+       disable-memory-tests-alpha-arm64-ppc-ppc64-ppc64el-riscv64-s390x.patch.
+       (Closes: #981333)
+
+ -- Francisco Vilmar Cardoso Ruviaro <vilmar@debian.org>  Fri, 29 Jan 2021 13:30:16 +0000
+
+libvhdi (20201204-2) unstable; urgency=medium
+
+  [ Sébastien Delafond ]
+  * Disable memory tests on riscv-64 (Closes: #978528)
+
+ -- Sebastien Delafond <seb@debian.org>  Wed, 27 Jan 2021 10:03:10 +0100
+
+libvhdi (20201204-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream version 20201204.
+  * Upload to unstable.
+  * debian/control: bump Standards-Version to 4.5.1.
+  * debian/copyright: update upstream copyright years.
+  * debian/libvhdi1.symbols: update symbols.
+
+ -- Francisco Vilmar Cardoso Ruviaro <vilmar@debian.org>  Tue, 15 Dec 2020 21:58:09 +0000
+
+libvhdi (20201018-1) experimental; urgency=medium
+
+  [ Samuel Henrique ]
+  * Team upload.
+  * Configure git-buildpackage.
+
+  [ Debian Janitor ]
+  * Use secure copyright file specification URI.
+  * Set debhelper-compat version in Build-Depends.
+  * Set upstream metadata fields: Bug-Database, Bug-Submit,
+    Repository, Repository-Browse.
+  * Update standards version to 4.5.0, no changes needed.
+  * Remove Section on libvhdi1 that duplicates source.
+  * Apply multi-arch hints. + python3-libvhdi: Add Multi-Arch: same.
+  * Update watch file format version to 4.
+  * Use cross-build compatible macro for finding pkg-config.
+
+  [ Francisco Vilmar Cardoso Ruviaro ]
+  * New upstream version 20201018.
+  * debian/control:
+      - Bump DH level to 13.
+      - Add 'Rules-Requires-Root: no'.
+  * debian/copyright: update upstream and packaging copyright.
+  * debian/libvhdi1.symbols:
+      - Add 'Build-Depends-Package' field.
+      - Update symbols.
+  * debian/rules: remove DEB_LDFLAGS_MAINT_APPEND variable
+    because the --as-needed flag is default since Bullseye.
+  * debian/tests/autopkgtest-pkg-python.conf: create to run
+    autopkgtest successfully.
+
+ -- Francisco Vilmar Cardoso Ruviaro <vilmar@debian.org>  Wed, 04 Nov 2020 15:53:58 +0000
+
+libvhdi (20181227-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Remove the Python 2 bindings. (Closes: #936931)
+
+  [ Samuel Henrique ]
+  * Add salsa-ci.yml
+
+ -- Adrian Bunk <bunk@debian.org>  Sat, 18 Jan 2020 23:58:49 +0200
+
+libvhdi (20181227-1) unstable; urgency=medium
+
+  * New upstream version 20181227
+  * Bump Debhelper compat level
+  * Replace dh_install --fail-missing
+  * Bump Standards-Version
+  * Enable hardening rules
+
+ -- Hilko Bengen <bengen@debian.org>  Mon, 14 Jan 2019 02:48:40 +0100
+
+libvhdi (20181118-1) unstable; urgency=medium
+
+  [ Raphaël Hertzog ]
+  * Update team maintainer address to Debian Security Tools
+    <team+pkg-security@tracker.debian.org>
+  * Update Vcs-Git and Vcs-Browser for the move to salsa.debian.org
+
+  [ Hilko Bengen ]
+  * New upstream version 20181118
+  * Bump Standards-Version
+  * Remove unneeded dh --parallel argument
+
+ -- Hilko Bengen <bengen@debian.org>  Mon, 19 Nov 2018 13:04:04 +0100
+
+libvhdi (20170223-3) unstable; urgency=medium
+
+  * Modernize package: Fix Vcs URLs, remove -dbg package, bump DH compat
+    level, Standards-Version
+
+ -- Hilko Bengen <bengen@debian.org>  Mon, 13 Nov 2017 14:22:37 +0100
+
+libvhdi (20170223-2) unstable; urgency=medium
+
+  * Add mising Python3 dependency, thanks to Adrian Bunk, Scott Kitterman
+    (Closes: #867409, #867610)
+
+ -- Hilko Bengen <bengen@debian.org>  Fri, 21 Jul 2017 00:33:22 +0200
+
+libvhdi (20170223-1) unstable; urgency=medium
+
+  * New upstream version 20170223
+  * Bump Standards-Version
+
+ -- Hilko Bengen <bengen@debian.org>  Sat, 25 Feb 2017 10:59:34 +0100
+
+libvhdi (20160424-1) unstable; urgency=medium
+
+  * New upstream version
+
+ -- Hilko Bengen <bengen@debian.org>  Mon, 25 Apr 2016 20:09:20 +0200
+
+libvhdi (20160423-1) unstable; urgency=medium
+
+  * New upstream version
+  * Add Python 3 bindings
+  * Update symbols
+
+ -- Hilko Bengen <bengen@debian.org>  Sun, 24 Apr 2016 12:10:18 +0200
+
+libvhdi (20160108-1) unstable; urgency=medium
+
+  * New upstream version
+
+ -- Hilko Bengen <bengen@debian.org>  Tue, 12 Jan 2016 08:09:55 +0100
+
+libvhdi (20151220-1) unstable; urgency=medium
+
+  * New upstream version
+
+ -- Hilko Bengen <bengen@debian.org>  Thu, 24 Dec 2015 14:37:37 +0100
+
+libvhdi (20151205-1) unstable; urgency=medium
+
+  * New upstream version
+
+ -- Hilko Bengen <bengen@debian.org>  Sat, 12 Dec 2015 13:33:25 +0100
+
+libvhdi (20150905-1) unstable; urgency=medium
+
+  * New upstream version
+  * Don't mention multiarch-support directly in Pre-Depends line.
+
+ -- Hilko Bengen <bengen@debian.org>  Wed, 16 Sep 2015 23:51:38 +0200
+
+libvhdi (20150110-2) unstable; urgency=medium
+
+  * Fixed watch file
+  * Gave package to Debian Forensics team
+
+ -- Hilko Bengen <bengen@debian.org>  Fri, 31 Jul 2015 20:00:07 +0200
+
+libvhdi (20150110-1) unstable; urgency=low
+
+  * Initial release (Closes: #792347)
+
+ -- Hilko Bengen <bengen@debian.org>  Sun, 19 Jul 2015 21:43:32 +0200

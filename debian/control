@@ -1,15 +1,67 @@
-Source: template-repository
-Section: unknown
+Source: libvhdi
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Debian Security Tools <team+pkg-security@tracker.debian.org>
+Uploaders: Hilko Bengen <bengen@debian.org>,
+           Francisco Vilmar Cardoso Ruviaro <vilmar@debian.org>
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               libbfio-dev,
+               libfuse3-dev,
+               pkgconf,
+               python3-dev,
+               python3-setuptools
+Standards-Version: 4.6.0
+Section: libs
+Homepage: https://github.com/libyal/libvhdi
+Vcs-Git: https://salsa.debian.org/pkg-security-team/libvhdi.git
+Vcs-Browser: https://salsa.debian.org/pkg-security-team/libvhdi
+Rules-Requires-Root: no
 
-Package: template-repository
+Package: libvhdi-dev
+Section: libdevel
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Multi-Arch: same
+Depends: libvhdi1 (= ${binary:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends}
+Description: Virtual Hard Disk image format access library -- development files
+ libvhdi is a library to access the Virtual Hard Disk (VHD) image format.
+ .
+ This package includes the development support files.
+
+Package: libvhdi1
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Description: Virtual Hard Disk image format access library
+ libvhdi is a library to access the Virtual Hard Disk (VHD) image format.
+ .
+ This package contains the shared library.
+
+Package: libvhdi-utils
+Section: otherosfs
+Architecture: any
+Multi-Arch: foreign
+Depends: libvhdi1,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Description: Virtual Hard Disk image format access library -- Utilities
+ libvhdi is a library to access the Virtual Hard Disk (VHD) image format.
+ .
+ This package contains tools to access data stored in VHD files:
+ vhdiinfo, vhdimount.
+
+Package: python3-libvhdi
+Section: python
+Architecture: any
+Depends: libvhdi1 (= ${binary:Version}),
+         ${misc:Depends},
+         ${python3:Depends},
+         ${shlibs:Depends}
+Multi-Arch: same
+Description: Virtual Hard Disk image format access library -- Python 3 bindings
+ libvhdi is a library to access the Virtual Hard Disk (VHD) image format.
+ .
+ This package contains Python 3 bindings for libvhdi.

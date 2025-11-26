@@ -1,0 +1,18 @@
+Description: Disable memory tests on alpha, arm64, powerpc, ppc64, ppc64el, riscv64 and s390x.
+Author: Aurelien Jarno <aurel32@debian.org>
+Bug-Debian: https://bugs.debian.org/978528
+Forwarded: not-needed
+Reviewed-By: Francisco Vilmar Cardoso Ruviaro <vilmar@debian.org>
+Last-Update: 2024-07-19
+
+--- a/tests/vhdi_test_memory.h
++++ b/tests/vhdi_test_memory.h
+@@ -28,7 +28,7 @@
+ extern "C" {
+ #endif
+ 
+-#if defined( HAVE_GNU_DL_DLSYM ) && defined( __GNUC__ ) && !defined( LIBVHDI_DLL_IMPORT ) && !defined( __arm__ ) && !defined( __clang__ ) && !defined( __CYGWIN__ ) && !defined( __hppa__ ) && !defined( __loongarch__ ) && !defined( __mips__ ) && !defined( __riscv ) && !defined( __sparc__ ) && !defined( HAVE_ASAN )
++#if defined( HAVE_GNU_DL_DLSYM ) && defined( __GNUC__ ) && !defined( LIBVHDI_DLL_IMPORT ) && !defined( __aarch64__ ) && !defined( __alpha__ ) && !defined( __arm__ ) && !defined( __clang__ ) && !defined( __CYGWIN__ ) && !defined( __hppa__ ) && !defined( __loongarch__ ) && !defined( __mips__ ) && !defined( __powerpc__ ) && !defined( __ppc64__ ) && !defined( __ppc64le__ ) && !defined( __riscv ) && !defined( __s390x__ ) && !defined( __sparc__ ) && !defined( HAVE_ASAN )
+ #define HAVE_VHDI_TEST_MEMORY		1
+ #endif
+ 
